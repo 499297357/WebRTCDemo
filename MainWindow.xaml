@@ -1,0 +1,38 @@
+﻿<Window x:Class="Source.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Source"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="mygrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox TextWrapping="Wrap" Name="txt_MyDes" IsReadOnly="True"/>
+        <Button Grid.Column="1" Content="创建" Click="Button_Click"/>
+
+        <TextBox TextWrapping="Wrap" Grid.Row="1" Name="txt_Des"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="回复" Click="Button_Click_1"/>
+
+
+        <TextBox TextWrapping="Wrap" Grid.Row="2" Name="txt_Ice"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Ice" Click="Button_Ice"/>
+
+        <TextBox TextWrapping="Wrap" Grid.Row="3" IsReadOnly="True" Name="txt_myIce"/>
+
+        <Image Grid.Row="4" Grid.ColumnSpan="2" x:Name="img"/>
+
+
+    </Grid>
+</Window>
