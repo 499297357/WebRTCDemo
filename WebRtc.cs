@@ -36,7 +36,13 @@ namespace Source
             logger = AddConsoleLogger();
             RTCConfiguration config = new RTCConfiguration
             {
-                iceServers = new List<RTCIceServer> { new RTCIceServer { urls = STUN_URL } }
+                iceServers = new List<RTCIceServer> {
+                    new RTCIceServer
+                {
+                    urls = "turn:openrelay.metered.ca:80",
+                    username = "openrelayproject",
+                    credential = "openrelayproject"
+                } }
             };
             pc = new RTCPeerConnection(config);
             //pc.createDataChannel("asdasd");
@@ -329,6 +335,18 @@ namespace Source
             src.UnlockBits(data);
             src.Dispose();
         }
+
+        //说明，下面方法转换性能飞天的提升，rect在第一次创建画布的时候创建好，后期只需要传入。次方法需要使用不安全代码unsafe，项目需要允许不安全代码运行，不能用x86运行。
+        //public unsafe void ToBitmapSource4(WriteableBitmap bit, RawImage rawImage, Int32Rect rect)
+        //{
+        //    bit.Lock();
+        //    Unsafe.CopyBlockUnaligned((void*)bit.BackBuffer, (void*)rawImage.Sample, (uint)(rawImage.Width * rawImage.Height * 3));
+        //    //Marshal.Copy(rawImage.GetBuffer(), 0, bit.BackBuffer, rawImage.GetBuffer().Length);
+        //    bit.AddDirtyRect(rect);
+        //    bit.Unlock();
+        //}
+
+
         private static Microsoft.Extensions.Logging.ILogger AddConsoleLogger()
         {
             var serilogLogger = new LoggerConfiguration()
